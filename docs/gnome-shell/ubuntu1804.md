@@ -30,7 +30,7 @@ glib-compile-resources --target ../gnome-shell-theme.gresource gnome-shell-theme
 
 //这是是下载gnome-shell-theme.gresource.xml资源规格文件到当前目录
 ```
-curl https://raw.githubusercontent.com/GNOME/gnome-shell/master/data/gnome-shell-theme.gresource.xml > gnome-shell-theme.gresource.xml
+curl http://raw.githubusercontent.com/GNOME/gnome-shell/master/data/gnome-shell-theme.gresource.xml > gnome-shell-theme.gresource.xml
 ```
 接着执行编译命令来生成资源文件：
 
@@ -78,9 +78,54 @@ echo """	</gresource>
 ### pack.sh
 
 ```
+#!/bin/bash
 
+if ! which glib-compile-resources; then
+	sudo apt-get install -y libglib2.0-dev-bin
+fi
+cd ./theme
+glib-compile-resources --target ../gnome-shell-theme.gresource-new ../gnome-shell-theme.gresource.xml
 ```
 
+## gnome-shell-theme.gresource.xml
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+  <gresource prefix="/org/gnome/shell/theme">
+    <file>calendar-today.svg</file>
+    <file>checkbox-focused.svg</file>
+    <file>checkbox-off-focused.svg</file>
+    <file>checkbox-off.svg</file>
+    <file>checkbox.svg</file>
+    <file>dash-placeholder.svg</file>
+    <file>gnome-shell.css</file>
+    <file>gnome-shell-high-contrast.css</file>
+    <file>key-enter.svg</file>
+    <file>key-hide.svg</file>
+    <file>key-layout.svg</file>
+    <file>key-shift.svg</file>
+    <file>key-shift-uppercase.svg</file>
+    <file>key-shift-latched-uppercase.svg</file>
+    <file alias="icons/message-indicator-symbolic.svg">message-indicator-symbolic.svg</file>
+    <file>no-events.svg</file>
+    <file>no-notifications.svg</file>
+    <file>noise-texture.png</file>
+    <file>pad-osd.css</file>
+    <file alias="icons/pointer-double-click-symbolic.svg">pointer-double-click-symbolic.svg</file>
+    <file alias="icons/pointer-drag-symbolic.svg">pointer-drag-symbolic.svg</file>
+    <file alias="icons/pointer-primary-click-symbolic.svg">pointer-primary-click-symbolic.svg</file>
+    <file alias="icons/pointer-secondary-click-symbolic.svg">pointer-secondary-click-symbolic.svg</file>
+    <file>process-working.svg</file>
+    <file>toggle-off.svg</file>
+    <file>toggle-off-dark.svg</file>
+    <file>toggle-off-hc.svg</file>
+    <file>toggle-on.svg</file>
+    <file>toggle-on-dark.svg</file>
+    <file>toggle-on-hc.svg</file>
+  </gresource>
+</gresources>
+```
 
 
 ## css样式
