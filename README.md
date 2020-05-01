@@ -1,2 +1,7 @@
-# learn-gnome
-GNOME
+# GNOME 学习笔记
+
+
+
+
+
+---
